@@ -1,5 +1,6 @@
 package hello.exception.api;
 
+import hello.exception.exception.BadRequestException;
 import hello.exception.exception.UserException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,9 +25,12 @@ public class ApiExceptionController {
         if (id.equals("user-ex")) {
             throw new UserException("사용자 오류");
         }
-
-
         return new MemberDto(id, "hello " + id);
+    }
+
+    @GetMapping("/api/response-status-ex1")
+    public String responseStatusEx1() {
+        throw new BadRequestException();
     }
 
 
